@@ -1,0 +1,19 @@
+{
+  "name": "campingproductmanagement",
+  "version": "1.0.0",
+  "description": "Product Management Proof of Concept",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShlomoLove/CampingProductManagement.git"
+  },
+  "author": "Scott Nassau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShlomoLove/CampingProductManagement/issues"
+  },
+  "homepage": "https://github.com/ShlomoLove/CampingProductManagement#readme"
+}
