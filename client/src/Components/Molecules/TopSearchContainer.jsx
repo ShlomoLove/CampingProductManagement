@@ -22,6 +22,7 @@ const InputContainer = styled.div `
 `
 
 const TopSearchContainer = props => {
+  const { handleAddProductButton } = props
   return (
     <>
       <UpperContainer>
@@ -36,7 +37,8 @@ const TopSearchContainer = props => {
         <StyledButton
           margin={'20px'} 
           type='button' 
-          value='Add New Product' 
+          value='Add New Product'
+          onClick={() => handleAddProductButton() }
         />
       </UpperContainer>
     </>

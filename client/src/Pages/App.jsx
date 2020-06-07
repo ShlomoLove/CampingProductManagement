@@ -23,6 +23,11 @@ class App extends Component {
       sets: [],
       brands: [],
       vendors: [],
+      newName: '',
+      newSku: '',
+      newPrice: '',
+      newDescription: '',
+      newBrand: ''
     }
   }
 
@@ -47,17 +52,67 @@ class App extends Component {
     .catch(error => console.log (`error in getting brands ${error}`))
   }
 
+  handleAddProductButton = () => {
+    this.setState ({ display: 'NewProduct' })
+
+  }
+
+  updateValue = (event, key ) => {
+    this.setState({
+      [key]: event.target.value
+    })
+  }
+
+  submitNewProduct = () => {
+    const { newName, newDescription, newPrice, newSku, newBrand} = this.state
+    if (newName === undefined) return 
+    const submitName = newName
+    const submitDescription = newDescription ? newDescription : null
+    const submitPrice = newPrice ? Number(newPrice) : null
+    const submitSku = newSku ? Number(newSku) : null
+    // const newBrand = newProduct.brand ? newProduct.brand : null
+    axios
+    .post('/camping/products/', {
+      name: submitName,
+      description: submitDescription,
+      price: submitPrice,
+      sku: submitSku,
+    })
+    .then(data => {
+      this.getAllItems('products')
+      this.setState({ display: 'ProductGrid', 
+                    newName: '', 
+                    newDescription: '', 
+                    newPrice: '', 
+                    newSku: '' })
+    })
+    .catch(error => console.log (`error adding new product: ${error}`))
+  }
+
   render () {
-    const { display, vendors, brands, products } = this.state
+    const { display, vendors, brands, products, newName, newPrice, newDescription, newSku, newBrand } = this.state
     console.log (this.state, 'state')
     return (
       <>
         <MainContainer>
             {display === 'ProductGrid' && (
-              <ProductGrid products={products} vendors={vendors} brands={brands}/>
+              <ProductGrid 
+                products={products} 
+                vendors={vendors} 
+                brands={brands} 
+                handleAddProductButton={this.handleAddProductButton}
+              />
             )}
             {display === 'NewProduct' && (
-              <NewProduct/>
+              <NewProduct 
+                submitNewProduct={this.submitNewProduct}
+                newName={newName} 
+                newPrice={newPrice}
+                newDescription={newDescription}
+                newSku={newSku}
+                newBrand={newBrand}
+                updateValue ={this.updateValue}
+              />
             )}
             {display === 'ProductInfo' && (
               <ProductInfo/>

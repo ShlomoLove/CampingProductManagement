@@ -56,7 +56,8 @@ const StyledTitle = styled.h4 `
 
 const StyledSelectBox = styled.div `
   height: 12px;
-  width: 12px;  
+  width: 12px;
+  margin-top: 10px;   
   border: 1px solid #efa9a9;
   border-radius: 4px; 
 `
@@ -69,11 +70,11 @@ const OuterStyledBox = styled.div `
 `
 
 const ProductGrid = props => {
-  const { products } = props
+  const { products, display, vendors, brands, handleAddProductButton } = props
   return (
     <>
       <TopBannerContainer>
-        <TopSearchContainer>
+        <TopSearchContainer handleAddProductButton={handleAddProductButton}>
         </TopSearchContainer>
       </TopBannerContainer>
       <CenterWindow>
