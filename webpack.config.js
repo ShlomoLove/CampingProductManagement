@@ -3,9 +3,9 @@ const webpack = require('webpack')
 const Dotenv = require('dotenv-webpack')
 
 module.exports = {
-  entry: path.resolve(__dirname, './Frontend/client/src/index.jsx'),
+  entry: path.resolve(__dirname, './client/src/index.jsx'),
   output: {
-    path: path.resolve(__dirname, './Frontend/client/dist/'),
+    path: path.resolve(__dirname, './client/dist/'),
     filename: 'bundle.js',
   },
   mode: 'development',

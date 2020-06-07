@@ -2,11 +2,10 @@
   "name": "campingproductmanagement",
   "version": "1.0.0",
   "description": "Product Management Proof of Concept",
-  "main": "index.js",
+  "main": "./server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-frontend": "nodemon Frontend/server/index.js",
-    "start-api": "nodemon API/server/index.js",
+    "start": "nodemon /server/index.js",
     "build": "Webpack --config webpack.config.js --display-error-details"
   },
   "repository": {
