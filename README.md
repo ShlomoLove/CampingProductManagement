@@ -9,7 +9,7 @@ To Run the Project follow the following steps.
 * Third: in the root folder of the project run: 'npm install' - using yarn should work as well
 * Fourth: create a '.env' folder in the root directory - create 3 variables PG_HOST=(place your host in this variable - "localhost" to run locally) PG_PASSWORD=(if you have a password on your PSQL database place it here or else null) PG_USER=(this should be your username for your PSQL database)
 * Fifth: run 'npm run build' - this will build your bundle and place it in your client/dist directory
-* Sixth: run 'npm run start' - this will run the server - you should be able to open localhost:3003 to see the current version of the app
+* Sixth: run 'npm run start' - this will run the server - you should be able to open localhost:3003 in your web browser to see the current version of the app
 
 ### Structure
 
