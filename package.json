@@ -4,7 +4,10 @@
   "description": "Product Management Proof of Concept",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-frontend": "nodemon Frontend/server/index.js",
+    "start-api": "nodemon API/server/index.js",
+    "build": "Webpack --config webpack.config.js --display-error-details"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,34 @@
   "bugs": {
     "url": "https://github.com/ShlomoLove/CampingProductManagement/issues"
   },
-  "homepage": "https://github.com/ShlomoLove/CampingProductManagement#readme"
+  "homepage": "https://github.com/ShlomoLove/CampingProductManagement#readme",
+  "dependencies": {
+    "@babel/core": "^7.10.1",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/preset-env": "^7.10.1",
+    "@babel/preset-react": "^7.10.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
+    "axios": "^0.19.2",
+    "babel-loader": "^8.1.0",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "css-loader": "^3.5.3",
+    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^1.8.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "pg": "^8.2.1",
+    "pg-hstore": "^2.3.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "sequelize": "^5.21.12",
+    "style-loader": "^1.2.1",
+    "styled-components": "^5.1.1",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
 }
