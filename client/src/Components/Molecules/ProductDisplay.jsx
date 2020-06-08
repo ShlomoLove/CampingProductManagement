@@ -7,14 +7,35 @@ import StyledButton from '../Atoms/StyledButton'
 
 const StyledSelect = styled.select`
   width: 80%;
-  height: 35px; 
+  height: 35px;
+  border-radius: 10px;
+  font-size: 18px; 
+  font-family: 'Roboto', sans-serif; 
+  font-size: 20px; 
+  height: 35px;
+  width: 80%;
+  outline: none;
+  background: #EFEFF4;
+  border: solid #EFEFF4;
+  box-shadow: 1px 1px 20px 1px rgba(33, 27, 27, .4);
+  transition: all 0.3s ease; 
+  :focus {
+    border-color: #00b300;
+  }
+
+  @media(max-width: 480px) {
+    width: 360px;
+    height: 35px; 
+  }
 `
+
 const StyledOption = styled.option`
   font-family: 'Roboto', sans-serif;
   font-weight: 200;
   font-size: 18px;
   color: #A9A9A9;  
 `
+
 const StyledText = styled.h4`
   font-family: 'Roboto', sans-serif;
   font-weight: 400;

@@ -15,16 +15,4 @@ const TopBannerContainer = styled.div `
   }
 `
 
-// export default TopBannerContainer
-
-// const TopBanner = () => {
-//   return (
-//   <>
-//     <TopBannerContainer>
-//       <TopSearchContainer/>
-//     </TopBannerContainer>
-//   </>
-//   )
-// }
-
 export default TopBannerContainer

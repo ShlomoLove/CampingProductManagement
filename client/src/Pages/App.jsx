@@ -112,8 +112,8 @@ class App extends Component {
     if (location === 'ProductInfo') {
       this.setState ({ display: location,
           featuredProduct: product,
-          newBrand: product.brand,
-          newVendor: product.vendor,
+          newBrand: product.brand_id,
+          newVendor: product.vendor_id,
           newName: product.name,
           newDescription: product.description,
           newPrice: product.price,
@@ -156,23 +156,26 @@ class App extends Component {
     .catch(error => console.log (`error adding new brand: ${error}`))
   } 
 
-
   submitProduct = (type) => {
-    const { newName, newDescription, newPrice, newSku, newBrand, featuredProduct} = this.state
+    const { newName, newDescription, newPrice, newSku, newBrand, featuredProduct, newVendor} = this.state
     if (newName === undefined) return 
     const submitName = newName
     const submitDescription = newDescription ? newDescription : null
     const submitPrice = newPrice ? Number(newPrice) : null
     const submitSku = newSku ? Number(newSku) : null
-    // const newBrand = newProduct.brand ? newProduct.brand : null
+    const submitBrand = newBrand ? Number(newBrand) : null
+    const submitVendor = newVendor ? Number(newVendor) : null
+    const submitObject = {
+      name: submitName,
+      description: submitDescription,
+      price: submitPrice,
+      sku: submitSku,
+      brand_id: submitBrand,
+      vendor_id: submitVendor
+    }
     if (type === 'new') {
         axios
-        .post('/camping/products/', {
-          name: submitName,
-          description: submitDescription,
-          price: submitPrice,
-          sku: submitSku,
-        })
+        .post('/camping/products/', submitObject )
         .then(data => {
           this.getAllItems('products')
         })
@@ -180,12 +183,7 @@ class App extends Component {
       }
       if (type === 'update') {
         axios
-        .put(`/camping/products/${featuredProduct.id}`, {
-          name: submitName,
-          description: submitDescription,
-          price: submitPrice,
-          sku: submitSku,
-        })
+        .put(`/camping/products/${featuredProduct.id}`, submitObject)
         .then(data => {
           this.getAllItems('products')
         })
@@ -214,6 +212,20 @@ class App extends Component {
     }
     let productSearchResults = products.filter(product => filterProducts(product))
     this.setState({productsDisplay: productSearchResults})
+  }
+
+  returnPage = () => {
+    this.setState({
+      display: 'ProductGrid',
+      newName: '',
+      newSku: '',
+      newPrice: '',
+      newDescription: '',
+      newBrand: '',
+      newVendor: '', 
+      addABrand: '',
+      addAVendor: ''
+    })
   }
 
   render () {
@@ -263,6 +275,7 @@ class App extends Component {
                 addAVendor={addAVendor}
                 addVendor={this.addVendor}
                 addBrand={this.addBrand}
+                returnPage={this.returnPage}
               />
             )}
             {display === 'ProductInfo' && (
@@ -282,6 +295,7 @@ class App extends Component {
                 addAVendor={addAVendor}
                 addVendor={this.addVendor}
                 addBrand={this.addBrand}
+                returnPage={this.returnPage}
               />
             )}
         </MainContainer>
