@@ -18,7 +18,7 @@ module.exports = {
       where: {id: deleteId}
     })
     .then(() => {
-      res.status(204).send(`deleted product: ${deletedId}`)
+      res.status(204).send(`deleted product`)
     })
     .catch(err => console.error(err));
   },

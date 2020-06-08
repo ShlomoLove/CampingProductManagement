@@ -8,19 +8,26 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 const TopGrid = styled.div `
   display: grid;
-  grid-template-columns: 1.5fr 3.5fr 3.5fr 3.5fr; 
+  grid-template-columns: 5fr 3fr 3fr 1fr; 
+  border-bottom: 1.5px solid #A9A9A9;
+  padding-bottom: 15px;  
 `
 
-const ItemGrid = styled.div `
+const InnerItemGrid = styled.div `
   display: grid;
   align-items: center;
-  grid-template-columns: 1.5fr 3.5fr 3.5fr 3.5fr; 
-  border-bottom: 1px solid #F5F5F5;
+  grid-template-columns: 5fr 3fr 3fr; 
+`
+
+const OuterItemGrid = styled.div`
+  display: grid;
+  grid-template-columns: 11fr 1fr;
+  border-bottom: 2px solid #F5F5F5;
+  margin-left: 10px; 
 
   &:hover {
     box-shadow: 1px 1px 8px 3px rgba(33, 27, 27, .1);
     cursor: pointer;
-  }
 `
 
 const TrashLogoContainer = styled.div `
@@ -70,35 +77,41 @@ const OuterStyledBox = styled.div `
 `
 
 const ProductGrid = props => {
-  const { products, display, vendors, brands, handleAddProductButton } = props
+  const { products,
+          productsDisplay,
+          vendors, 
+          brands, 
+          handlePageChange, 
+          handleDelete,
+          handleProductSearch,
+        } = props
   return (
     <>
       <TopBannerContainer>
-        <TopSearchContainer handleAddProductButton={handleAddProductButton}>
-        </TopSearchContainer>
+        <TopSearchContainer handlePageChange={handlePageChange} handleProductSearch={handleProductSearch}/>
       </TopBannerContainer>
       <CenterWindow>
         <TopGrid>
-          <TrashLogoContainer>
-            <StyledIcon icon={faTrashAlt} />
-          </TrashLogoContainer>
           <StyledTitle size={'18px'} weight={400}> Product Name </StyledTitle>
           <StyledTitle size={'18px'} weight={400}> Price </StyledTitle>
           <StyledTitle size={'18px'} weight={400}> Sku </StyledTitle>
+          <StyledTitle size={'18px'} weight={400}></StyledTitle>
         </TopGrid>
         
-        { products !== undefined && (
+        { productsDisplay !== undefined && (
           <div>
-          {products.map(product => {
+          {productsDisplay.map(product => {
             return (
-              <ItemGrid>
-                <OuterStyledBox>
-                  <StyledSelectBox/>
-                </OuterStyledBox>
-                <StyledTitle size={'16px'} weight={200}>{product.name}</StyledTitle>
-                <StyledTitle size={'16px'} weight={200}>${product.price}</StyledTitle>
-                <StyledTitle size={'16px'} weight={200}>{product.sku}</StyledTitle>
-              </ItemGrid>
+              <OuterItemGrid>
+                <InnerItemGrid onClick={() => handlePageChange('ProductInfo', product)}>
+                  <StyledTitle size={'16px'} weight={200}>{product.name}</StyledTitle>
+                  <StyledTitle size={'16px'} weight={200}>${product.price}</StyledTitle>
+                  <StyledTitle size={'16px'} weight={200}>{product.sku}</StyledTitle>
+                  </InnerItemGrid>
+                  <TrashLogoContainer>
+                    <StyledIcon icon={faTrashAlt} onClick={()=>handleDelete(product)}/>
+                  </TrashLogoContainer>
+              </OuterItemGrid>
             )
           })}
         </div>

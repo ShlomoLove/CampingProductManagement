@@ -22,13 +22,14 @@ const InputContainer = styled.div `
 `
 
 const TopSearchContainer = props => {
-  const { handleAddProductButton } = props
+  const { handlePageChange, handleProductSearch } = props
   return (
     <>
       <UpperContainer>
         <UpperLogo/>
         <InputContainer>
           <StyledInput
+            onChange={(e) => handleProductSearch(e.target.value) }
             placeholder='search for products' 
             margin={'5px'}
             type="text" 
@@ -38,7 +39,7 @@ const TopSearchContainer = props => {
           margin={'20px'} 
           type='button' 
           value='Add New Product'
-          onClick={() => handleAddProductButton() }
+          onClick={() => handlePageChange('NewProduct') }
         />
       </UpperContainer>
     </>
