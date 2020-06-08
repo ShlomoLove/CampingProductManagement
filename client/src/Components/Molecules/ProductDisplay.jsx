@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import InnerContainer from '../Atoms/InnerContainer'
 import StyledProductArea from '../Atoms/StyledProductArea'
@@ -32,6 +32,8 @@ const StyledInputContainer = styled.div`
 `
 
 const ProductDisplay = props => {
+  const [dislayVendor, setDisplayVendor] = useState('')
+
   const {
       newName, 
       newPrice,

@@ -136,7 +136,7 @@ class App extends Component {
     .post('/camping/vendors/', {
       name: addAVendor
     })
-    .then(data => {
+    .then(({data}) => {
       this.setState({newVendor: data.id, addAVendor: ''})
       this.getAllItems('vendors')
     })
@@ -149,7 +149,7 @@ class App extends Component {
     .post('/camping/brands/', {
       name: addABrand
     })
-    .then(data => {
+    .then(({data}) => {
       this.setState({newBrand: data.id, addABrand: ''})
       this.getAllItems('brands')
     })
